@@ -26,4 +26,11 @@ pipeline {
             }
         }
     }
+    post {
+      always {
+        mail to: 'darryl.hopper@first-utility.com',
+        subject: "Completed Pipeline: ${currentBuild.fullDisplayName}",
+        body: "Your build completed, please check: ${env.BUILD_URL}"
+      }
+    }
 }
